@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mid-Year Review & Performance Portfolio &mdash; Executive Master Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Vanilla Tilt for 3D Hover Tilt Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #04060c;
+            --card-bg: rgba(11, 16, 29, 0.85);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --card-border-hover: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --rocket-red: #38bdf8;
+            --rocket-dark-red: #60a5fa;
+            --accent-purple: #8b5cf6;
+    	    --accent-pink: #ec4899;
+            --accent-blue: #3b82f6;
+            
+            --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            --gradient-card-back: linear-gradient(135deg, #0b101d 0%, #131b31 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 3rem 1rem;
+            overflow-x: hidden;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(192, 132, 252, 0.08) 0%, transparent 45%);
+        }
+
+        /* AMBIENT GLOW ORBS WITH ADVANCED MORPHING */
+        .ambient-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            filter: blur(130px);
+            z-index: -1;
+            opacity: 0.18;
+            animation: floatOrb 12s ease-in-out infinite alternate, morphOrb 15s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .orb-1 { top: -10%; left: -5%; background: rgba(56, 189, 248, 0.35); }
+        .orb-2 { bottom: -10%; right: -5%; background: rgba(192, 132, 252, 0.35); animation-delay: -6s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(45px, 60px) scale(1.12); }
+            100% { transform: translate(-30px, 20px) scale(0.95); }
+        }
+
+        @keyframes morphOrb {
+            0% { border-radius: 50% 50% 50% 50%; }
+            50% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+            100% { border-radius: 40% 60% 30% 70% / 40% 50% 60% 50%; }
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER ANIMATION & GLITCH SHIMMER */
+        @keyframes headerReveal {
+            0% { opacity: 0; transform: translateY(-50px) scale(0.93); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+            animation: headerReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        header .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+            animation: pulseBadge 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(56, 189, 248, 0.15); }
+            50% { transform: scale(1.04); box-shadow: 0 0 25px rgba(56, 189, 248, 0.35); border-color: rgba(56, 189, 248, 0.6); }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.03em;
+            animation: textShimmer 6s linear infinite;
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        h2 span.icon-glow {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.4rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            display: inline-flex;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        h2:hover span.icon-glow {
+            transform: scale(1.15) rotate(12deg);
+        }
+
+        /* MASTER HIGHLIGHT BANNER FOR TOTAL VOLUME & AVERAGE QUALITY */
+        .master-highlight-banner {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .master-highlight-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--gradient-primary);
+        }
+
+        .master-highlight-content h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #38bdf8;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .master-highlight-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .master-highlight-stats-group {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .master-stat-item {
+            text-align: right;
+        }
+
+        .master-stat-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .master-highlight-stat {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f8fafc 30%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .master-highlight-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .master-stats-group {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+            .master-stat-item {
+                text-align: center;
+            }
+        }
+
+        /* 3D FLIP CARDS WITH GLASSMORPHISM & NEON HOVER */
+        .flip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 300px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid var(--card-border);
+            padding: 2.25rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .flip-card:hover .flip-card-front {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+        }
+
+        .flip-card-front {
+            background: var(--card-bg);
+        }
+
+        .flip-card-front.red-top { border-top: 4px solid #38bdf8; }
+        .flip-card-front.gold-top { border-top: 4px solid #c084fc; }
+
+        .flip-card-front .icon-box {
+            font-size: 2.75rem;
+            margin-bottom: 1.25rem;
+            background: #131b31;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .flip-card:hover .icon-box {
+            transform: scale(1.15) rotate(8deg);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+        }
+
+        .flip-card-front h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .flip-card-front .hint {
+            font-size: 0.78rem;
+            color: #38bdf8;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            animation: hintGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes hintGlow {
+            0% { box-shadow: 0 0 5px rgba(56, 189, 248, 0.1); }
+            100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+        }
+
+        .flip-card-back {
+            background: var(--gradient-card-back);
+            color: var(--text-main);
+            transform: rotateY(180deg);
+            text-align: left;
+            align-items: flex-start;
+            border-top: 4px solid #38bdf8;
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .flip-card-back h4 {
+            color: #38bdf8;
+            margin-bottom: 0.85rem;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flip-card-back ul {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .flip-card-back ul li {
+            margin-bottom: 0.6rem;
+            position: relative;
+            padding-left: 1.25rem;
+            line-height: 1.5;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .flip-card-back ul li:hover {
+            transform: translateX(4px);
+            color: var(--text-main);
+        }
+
+        .flip-card-back ul li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            font-size: 0.75rem;
+            top: 2px;
+        }
+
+        /* METRICS GRID WITH INNOVATIVE BLUE-THEMED GLOW & SCANNING ANIMATION */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.75rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: 1.85rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .metric-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gradient-primary);
+            background-size: 200% auto;
+            animation: textShimmer 4s linear infinite;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.25);
+            border-color: var(--card-border-hover);
+        }
+
+        .metric-card .month {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            color: #38bdf8;
+        }
+
+        /* HIGH-TECH INNOVATIVE ANIMATED LOAN METRIC CONTAINER (BLUE VERSION) */
+        .metric-card .stat-main-container {
+            position: relative;
+            margin: 0.5rem 0 1rem 0;
+            padding: 0.75rem;
+            background: rgba(56, 189, 248, 0.04);
+            border-radius: 1rem;
+            border: 1px dashed rgba(56, 189, 248, 0.25);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .metric-card:hover .stat-main-container {
+            background: rgba(56, 189, 248, 0.09);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Cyberpunk scanning beam effect across the loan number box */
+        .metric-card .stat-main-container::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(0deg, transparent 45%, rgba(56, 189, 248, 0.15) 50%, transparent 55%);
+            transform: translateY(-100%);
+            animation: scanBeam 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanBeam {
+            0% { transform: translateY(-100%); }
+            50%, 100% { transform: translateY(100%); }
+        }
+
+        .metric-card .stat-main {
+            font-size: 1.85rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f8fafc 30%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .metric-card:hover .stat-main {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+        }
+
+        .metric-card .stat-label-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #8b5cf6;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .metric-card .stat-sub {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+
+        .metric-card .stat-sub span {
+            background: #131b31;
+            padding: 0.3rem 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            transition: border-color 0.3s ease, background 0.3s ease;
+            text-align: center;
+        }
+
+        .metric-card:hover .stat-sub span {
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        /* AWARDS & COMMITTEE CARDS GRID */
+        .awards-grid, .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .award-card, .committee-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .award-card::before, .committee-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .award-card:hover::before, .committee-card:hover::before {
+            opacity: 1;
+        }
+
+        .award-card:hover, .committee-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 25px 50px rgba(56, 189, 248, 0.18);
+        }
+
+        .award-emoji-box, .committee-emoji-box {
+            font-size: 2.5rem;
+            background: #131b31;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.25rem;
+            border: 1px solid var(--card-border);
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .award-card:hover .award-emoji-box, .committee-card:hover .committee-emoji-box {
+            transform: scale(1.15) rotate(-12deg);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+        }
+
+        .award-details h4, .committee-details h4 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .award-details p, .committee-details p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ACCORDIONS WITH SMOOTH DYNAMIC HEIGHT & GLOW */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .accordion-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .accordion-item:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+        }
+
+        .accordion-header {
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .accordion-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease, opacity 0.4s ease;
+            padding: 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.75;
+            opacity: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 800px;
+            padding: 0 2rem 2rem 2rem;
+            opacity: 1;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+            background: rgba(192, 132, 252, 0.18);
+            color: #c084fc;
+            border-color: rgba(192, 132, 252, 0.5);
+            box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
+        }
+
+        /* CUSTOM BULLETS */
+        ul.custom-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.custom-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        ul.custom-bullets li:hover {
+            transform: translateX(6px);
+            color: var(--text-main);
+        }
+
+        ul.custom-bullets li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+            font-size: 0.9rem;
+            top: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        ul.custom-bullets li:hover::before {
+            transform: scale(1.3) rotate(90deg);
+            color: #c084fc;
+        }
+
+        ul.custom-bullets li strong {
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.3rem; }
+            body { padding: 1.5rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow orb-1"></div>
+    <div class="ambient-glow orb-2"></div>
+
+    <div class="container">
+        <header>
+            <div class="badge-tag">
+                <span>🚀</span> Mid-Year Executive Showcase &bull; Indhuja Panjanathan
+            </div>
+            <h1>Mid-Year Review & Performance Portfolio</h1>
+            <p>Showcasing sustained #1 Scorecard-ranking excellence across all months, record-breaking monthly volume milestones, targeted peer enablement, and cross-functional leadership impact.</p>
+        </header>
+
+        <!-- SECTION 1: Performance Journey -->
+        <section data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false">
+            <h2><span class="icon-glow">📈</span> Performance & Scorecard Journey</h2>
+            
+            <!-- Master Highlight Banner for Total Volume & Average Quality -->
+            <div class="master-highlight-banner" data-aos="zoom-in" data-aos-duration="800" data-aos-mirror="true" data-aos-once="false">
+                <div class="master-highlight-content">
+                    <h3>🏆 Cumulative Milestone Achievement</h3>
+                    <p>Total formal score-carded volume processed across all months, combined with overall average quality and unbroken #1 Scorecard-ranking leadership.</p>
+                </div>
+                <div class="master-highlight-stats-group">
+                    <div class="master-stat-item">
+                        <span class="master-stat-label">Total Volume</span>
+                        <div class="master-highlight-stat">44,863 Loans</div>
+                    </div>
+                    <div class="master-stat-item" style="border-left: 1px solid rgba(56, 189, 248, 0.2); padding-left: 2rem;">
+                        <span class="master-stat-label">Average Quality</span>
+                        <div class="master-highlight-stat" style="color: #38bdf8;">87.75%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-grid">
+                <!-- Card 1 -->
+                <div class="flip-card" data-aos="zoom-in" data-aos-delay="100" data-aos-mirror="true" data-aos-once="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front red-top">
+                            <div class="icon-box">🚀</div>
+                            <h3>Ramp Period (Jan – Mar)</h3>
+                            <span class="hint">🎯 Ready for a surprise? Flip me!</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4><span>⚡</span> Foundation & Acceleration</h4>
+                            <ul>
+                                <li>Rapid Ramp-Up: Built strong process expertise through effective training and hands-on learning opportunities, which accelerated productivity and 					    performance. This enabled me to surpass the wider taskforce's performance levels and establish myself as a top performer early in the ramp period.</li>
+                                <li>Efficiency Mastery: Consistently maintained an <strong>efficiency rating above 26</strong> throughout February and March.</li>
+                                <li>Onshore Impact: Earned a prestigious Spot Award (CAVS Coin) directly during the onshore leadership (from Heather) visit for exemplary execution.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flip-card" data-aos="zoom-in" data-aos-delay="250" data-aos-mirror="true" data-aos-once="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front gold-top">
+                            <div class="icon-box">⭐</div>
+                            <h3>Formal Scorecard (Apr – Aug)</h3>
+                            <span class="hint">👑 Curious? Flip me over for the magic numbers! ✨</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4><span>🏆</span> Consistency & Topper Status</h4>
+                            <ul>
+                                <li>Topper Streak: Maintained an unbroken reign as the <strong>#1 Scorecard-Ranking Topper</strong> across all months.</li>
+				<li>Quality as Majority: Prioritized accuracy above all else, ensuring that error-free execution and rigorous quality standards remained the core foundation of every file processed.</li>
+                                <li>Overall Achievement: Demonstrated sustained productivity growth from April through August, consistently delivering high processing volumes, maintaining strong quality standards, and contributing significantly to team success through efficiency and performance excellence.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volume Metrics Grid featuring Efficiency, Quality, Rank, and Volume Completed -->
+            <div class="metrics-grid">
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="100" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <div class="month">April</div>
+                    <div class="stat-main-container" data-aos="flip-up" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false">
+                        <span class="stat-label-tag">Volume Completed</span>
+                        <div class="stat-main">6,822 Loans</div>
+                    </div>
+                    <div class="stat-sub">
+                        <span>Rank: #1</span>
+                        <span>Efficiency: 19%</span>
+                        <span style="grid-column: span 2;">Quality: 92%</span>
+                    </div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <div class="month">May</div>
+                    <div class="stat-main-container" data-aos="flip-up" data-aos-delay="300" data-aos-mirror="true" data-aos-once="false">
+                        <span class="stat-label-tag">Volume Completed</span>
+                        <div class="stat-main">10,011 Loans</div>
+                    </div>
+                    <div class="stat-sub">
+                        <span>Rank: #1</span>
+                        <span>Efficiency: 32%</span>
+                        <span style="grid-column: span 2;">Quality: 75%</span>
+                    </div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="300" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <div class="month">June</div>
+                    <div class="stat-main-container" data-aos="flip-up" data-aos-delay="400" data-aos-mirror="true" data-aos-once="false">
+                        <span class="stat-label-tag">Peak Record</span>
+                        <div class="stat-main">10,534 Loans</div>
+                    </div>
+                    <div class="stat-sub">
+                        <span>Rank: #1</span>
+                        <span>Efficiency: 29%</span>
+                        <span style="grid-column: span 2;">Quality: 88%</span>
+                    </div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="400" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <div class="month">July</div>
+                    <div class="stat-main-container" data-aos="flip-up" data-aos-delay="500" data-aos-mirror="true" data-aos-once="false">
+                        <span class="stat-label-tag">1st Place Overall</span>
+                        <div class="stat-main">7,896 Loans</div>
+                    </div>
+                    <div class="stat-sub">
+                        <span>Rank: #1</span>
+                        <span>Efficiency: 29%</span>
+                        <span style="grid-column: span 2;">Quality: 96%</span>
+                    </div>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="500" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-perspective="1000">
+                    <div class="month">August</div>
+                    <div class="stat-main-container" data-aos="flip-up" data-aos-delay="600" data-aos-mirror="true" data-aos-once="false">
+                        <span class="stat-label-tag">Volume Completed</span>
+                        <div class="stat-main">9,678 Loans</div>
+                    </div>
+                    <div class="stat-sub">
+                        <span>Rank: N/A</span>
+                        <span>Efficiency: 33%</span>
+                        <span style="grid-column: span 2;">Quality: N/A</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- SECTION 3: Awards & Formal Recognitions -->
+        <section data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false">
+            <h2><span class="icon-glow">🏆</span> Awards & Formal Recognitions</h2>
+            <div class="awards-grid">
+                <div class="award-card" data-aos="fade-right" data-aos-delay="100" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="award-emoji-box">🌟</div>
+                    <div class="award-details">
+                        <h4 style="color: #f1f5f9;">Spot Award (CAVS Coin)</h4>
+                        <p>Recognized during the onshore leadership visit for achieving top-tier operational efficiency alongside robust quality standards.</p>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="award-emoji-box">🏅</div>
+                    <div class="award-details">
+                        <h4 style="color: #f1f5f9;">Amaze Points (April – August)</h4>
+                        <p>Secured consecutive #1 stack ranking recognitions and held 1st place in overall stack ranking across all scorecard months.</p>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-left" data-aos-delay="300" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="award-emoji-box">🚀</div>
+                    <div class="award-details">
+                        <h4 style="color: var(--text-main);">Special Milestone (June)</h4>
+                        <p>First individual on the floor to cross <strong>10,534 files processed</strong> in a single month while maintaining exceptional quality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Training Contributions & Operations -->
+        <section data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false">
+            <h2><span class="icon-glow">🎓</span> Training Contributions & Operations</h2>
+            <div class="accordion-container">
+                <!-- Accordion 1 -->
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="100" data-aos-mirror="true" data-aos-once="false">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><span>📚</span> Targeted Process Training (June)</h3>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Stepped in proactively to resolve team-wide confusion on new tasks that impacted accuracy across the team. Conducted a targeted walkthrough session covering:</p>
+                        <ul class="custom-bullets" style="margin-top: 0.85rem;">
+                            <li><strong>V.A. Benefit Letter Extraction</strong></li>
+                            <li><strong>Social Security Documentation Extraction</strong></li>
+                            <li><strong>Gift Letter Documentation</strong></li>
+                        </ul>
+                        <p style="margin-top: 0.85rem;">Successfully reduced team errors on those specific workflows and received formal leadership appreciation and a reward as amaze points.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 2 -->
+                <div class="accordion-item" data-aos="fade-up" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3><span>📊</span> Daily Throughput Tracking & EOD Reporting</h3>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Took complete ownership of daily EOD reporting from May through September, consistently compiling and submitting team loan completion totals and weekly averages to provide clear visibility into individual and team performance, ultimately serving as a vital tool to monitor and continuously improve daily efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Mind Magic Crew (MMC) — DISPLAYED AS CARDS INSTEAD OF AN ACCORDION -->
+        <section data-aos="fade-up" data-aos-duration="1000" data-aos-mirror="true" data-aos-once="false">
+            <h2><span class="icon-glow">🤝</span> Mind Magic Crew (MMC) Committee Contributions</h2>
+            <div class="committee-grid">
+                <!-- Card 1 -->
+                <div class="committee-card" data-aos="fade-right" data-aos-delay="100" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="committee-emoji-box">✨</div>
+                    <div class="committee-details">
+                        <h4>Role & Core Support</h4>
+                        <p>Acted as Chennai-End Communicator and engagement lead supporting the Process Knowledge Test (PKT) preparation process across the floor.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="committee-card" data-aos="fade-up" data-aos-delay="200" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="committee-emoji-box">🧘‍♀️</div>
+                    <div class="committee-details">
+                        <h4>Yoga Day & Mandala Activities</h4>
+                        <p>Coordinated Chennai execution for Yoga Day to promote physical wellness, and facilitated the immersive 'Mandala of Pride' creative relaxation activity to reduce operational burnout.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="committee-card" data-aos="fade-left" data-aos-delay="300" data-aos-mirror="true" data-aos-once="false" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="committee-emoji-box">🧠</div>
+                    <div class="committee-details">
+                        <h4>Brain Day Museum Installation</h4>
+                        <p>Spearheaded a large-scale, highly engaging interactive mini-museum installation showcasing cognitive health facts and practical wellness tips over two consecutive days, driving active cross-departmental participation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Consistency is the True Measure of Excellence</p>
+        </footer>
+    </div>
+
+    <!-- AOS Script Initialization with Mirror & Repeat Enabled -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false,      /* Allows animations to repeat every time you scroll past */
+            mirror: true,     /* Animates elements out when scrolling past them and in when scrolling back */
+            offset: 80,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+        });
+
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            item.classList.toggle('active', !isActive);
+        }
+    </script>
+
+</body>
+</html>
