@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDHUJA.SYS // HOLOGRAPHIC EXECUTIVE BRIEFING DECK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-obsidian: #030712;
+            --glass-panel: rgba(15, 23, 42, 0.65);
+            --border-glow: rgba(56, 189, 248, 0.3);
+            --border-active: rgba(56, 189, 248, 0.9);
+            --accent-cyan: #38bdf8;
+            --accent-violet: #8b5cf6;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --text-main: #94a3b8;
+            --text-bright: #f8fafc;
+            --font-head: 'Syncopate', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-fluid: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-obsidian: #f1f5f9;
+            --glass-panel: rgba(255, 255, 255, 0.85);
+            --border-glow: rgba(14, 165, 233, 0.25);
+            --border-active: rgba(14, 165, 233, 0.9);
+            --accent-cyan: #0284c7;
+            --accent-violet: #7c3aed;
+            --accent-emerald: #059669;
+            --accent-amber: #d97706;
+            --text-main: #475569;
+            --text-bright: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            padding: 2rem;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: var(--transition-fluid);
+        }
+
+        .deck-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .deck-container { grid-template-columns: 1fr; }
+        }
+
+        /* Sidebar Navigation Deck */
+        .sidebar-deck {
+            background: var(--glass-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            height: fit-content;
+        }
+
+        .brand-header h1 {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            color: var(--text-bright);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand-header p {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent-emerald);
+        }
+
+        .nav-modules {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .nav-pill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glow);
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: var(--transition-fluid);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-pill:hover, .nav-pill.active {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-cyan);
+            transform: translateX(6px);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+        }
+
+        .nav-pill-title {
+            font-family: var(--font-head);
+            font-size: 0.68rem;
+            color: var(--text-bright);
+            font-weight: 700;
+        }
+
+        .nav-pill-code {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--accent-cyan);
+        }
+
+        .sidebar-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--border-glow);
+            color: var(--text-bright);
+            padding: 0.9rem;
+            border-radius: 12px;
+            font-family: var(--font-head);
+            font-size: 0.68rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-fluid);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 30px var(--accent-cyan);
+        }
+
+        /* Main Holographic Workspace */
+        .workspace-stage {
+            background: var(--glass-panel);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            min-height: 700px;
+        }
+
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 1.5rem;
+        }
+
+        .stage-title-group h2 {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            color: var(--text-bright);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-title-group p {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-violet);
+        }
+
+        .live-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent-emerald);
+            color: var(--accent-emerald);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pulsing-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-emerald);
+            animation: pulseGlow 1.5s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 15px var(--accent-emerald); }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        /* Dynamic Content Panes */
+        .content-pane {
+            display: none;
+            animation: paneFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .content-pane.active { display: block; }
+
+        @keyframes paneFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid Cards & Tables */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: var(--transition-fluid);
+        }
+
+        .metric-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .metric-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            color: var(--text-bright);
+            font-weight: 700;
+        }
+
+        .data-table-wrapper {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        th {
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--text-bright);
+            font-family: var(--font-head);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+        }
+
+        tr:hover td {
+            background: rgba(56, 189, 248, 0.04);
+        }
+
+        .script-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-node {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent-cyan);
+            border-top: 1px solid var(--border-glow);
+            border-right: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            position: relative;
+        }
+
+        .timeline-node h4 {
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            color: var(--accent-amber);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .timeline-node p, .timeline-node li {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-node ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .timeline-node li::before {
+            content: "▸ ";
+            color: var(--accent-cyan);
+        }
+
+        /* Holographic Modal */
+        .holo-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(16px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .holo-modal-overlay.open { display: flex; }
+
+        .holo-modal-container {
+            background: var(--glass-panel);
+            border: 1px solid var(--accent-cyan);
+            width: 100%;
+            max-width: 900px;
+            border-radius: 24px;
+            box-shadow: 0 0 80px rgba(56, 189, 248, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+        }
+
+        .holo-modal-header {
+            background: rgba(3, 7, 18, 0.95);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .holo-modal-title {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+        }
+
+        .holo-modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .holo-modal-body {
+            padding: 2.5rem;
+            overflow-y: auto;
+            font-family: var(--font-body);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div class="deck-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-deck">
+            <div class="brand-header">
+                <h1>INDHUJA.SYS</h1>
+                <p>// MID YEAR APPRAISAL REVIEW PORTFOLIO</p>
+            </div>
+
+            <div class="nav-modules">
+                <div class="nav-pill active" onclick="switchPane(0, this)">
+                    <span class="nav-pill-title">01. PRODUCTIVITY</span>
+                    <span class="nav-pill-code">VOL // EFF</span>
+                </div>
+                <div class="nav-pill" onclick="switchPane(1, this)">
+                    <span class="nav-pill-title">02. QUALITY METRICS</span>
+                    <span class="nav-pill-code">ACCURACY</span>
+                </div>
+                <div class="nav-pill" onclick="switchPane(2, this)">
+                    <span class="nav-pill-title">03. AWARDS & COINS</span>
+                    <span class="nav-pill-code">CAVS // AMAZE</span>
+                </div>
+                <div class="nav-pill" onclick="switchPane(3, this)">
+                    <span class="nav-pill-title">04. TRAINING & EOD</span>
+                    <span class="nav-pill-code">LEADERSHIP</span>
+                </div>
+                <div class="nav-pill" onclick="switchPane(4, this)">
+                    <span class="nav-pill-title">05. MMC COMMITTEE</span>
+                    <span class="nav-pill-code">IMPACT</span>
+                </div>
+            </div>
+
+            <div class="sidebar-actions">
+                <button class="action-btn" onclick="openHoloModal()">🎙️ OVERALL SUMMARY FROM JAN - AUG</button>
+                <button class="action-btn" onclick="toggleHoloTheme()">⚡ THEME CYCLE</button>
+            </div>
+        </aside>
+
+        <!-- Main Holographic Workspace -->
+        <main class="workspace-stage">
+            <div class="stage-header">
+                <div class="stage-title-group">
+                    <h2 id="pane-heading">01. PRODUCTIVITY & SCORECARD TELEMETRY</h2>
+                    <p id="pane-subheading">Month-by-month Volume & Efficiency Breakdown</p>
+                </div>
+                <div class="live-badge">
+                    <div class="pulsing-dot"></div>
+                    <span>ACTIVE</span>
+                </div>
+            </div>
+
+            <!-- Pane 01: Productivity -->
+            <div class="content-pane active" id="pane-0">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">// PEAK MONTHLY FILES</div>
+                        <div class="metric-value">10,534</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// STACK RANK STREAK</div>
+                        <div class="metric-value">Rank #1 (4 Mo)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// PEAK EFFICIENCY</div>
+                        <div class="metric-value">33 Rating</div>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
+                    Established an unbreakable operational baseline during the ramp period (Jan–March) with efficiency ratings exceeding 26, outperforming the wider taskforce. Maintained an elite Rank #1 stack ranking across formal scoring months.
+                </p>
+
+                <div class="data-table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Period</th>
+                            <th>Efficiency Rating</th>
+                            <th>Quality Score</th>
+                            <th>Files Processed</th>
+                        </tr>
+                        <tr>
+                            <td>April</td>
+                            <td>19</td>
+                            <td>92%</td>
+                            <td>6,822</td>
+                        </tr>
+                        <tr>
+                            <td>May</td>
+                            <td>32 (Peak)</td>
+                            <td>75%</td>
+                            <td>10,011</td>
+                        </tr>
+                        <tr>
+                            <td>June</td>
+                            <td>29</td>
+                            <td>88%</td>
+                            <td>10,534 (Milestone)</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>29</td>
+                            <td>96% (Elite)</td>
+                            <td>7,896</td>
+                        </tr>
+                        <tr>
+                            <td>August</td>
+                            <td>33 (Rank N/A)</td>
+                            <td>N/A</td>
+                            <td>9,678</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pane 02: Quality -->
+            <div class="content-pane" id="pane-1">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">// PEAK ACCURACY</div>
+                        <div class="metric-value">96% Quality</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// VOLUME SURGE BALANCE</div>
+                        <div class="metric-value">Managed 10k+</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// ONSHORE RECOGNITION</div>
+                        <div class="metric-value">Spot Award</div>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
+                    Maintained rigorous quality compliance while scaling volume throughput during peak operational cycles. Successfully stabilized and drove precision to an elite 96% score in July.
+                </p>
+
+                <div class="data-table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Period</th>
+                            <th>Quality Level</th>
+                            <th>Strategic Execution Focus</th>
+                        </tr>
+                        <tr>
+                            <td>Ramp Phase (Jan–Mar)</td>
+                            <td>Solid Baseline[cite: 1]</td>
+                            <td>Mastered complex mortgage closing guidelines while upholding accuracy.</td>
+                        </tr>
+                        <tr>
+                            <td>April</td>
+                            <td>92%[cite: 1]</td>
+                            <td>Smooth transition into formal scorecard metrics.</td>
+                        </tr>
+                        <tr>
+                            <td>May</td>
+                            <td>75%[cite: 1]</td>
+                            <td>Absorbed high-volume surge capacity (10k+ files processed).</td>
+                        </tr>
+                        <tr>
+                            <td>June</td>
+                            <td>88%[cite: 1]</td>
+                            <td>Re-aligned accuracy standards alongside record-breaking volume.</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>96% (Elite)[cite: 1]</td>
+                            <td>Executed tactical precision pivot to maximize accuracy.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pane 03: Awards -->
+            <div class="content-pane" id="pane-2">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">// CAVS COIN SPOT AWARD</div>
+                        <div class="metric-value">Onshore Visit</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// AMAZE POINTS STREAK</div>
+                        <div class="metric-value">4 Consecutive Months</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">// SPECIAL MENTION</div>
+                        <div class="metric-value">10k+ Floor Pioneer</div>
+                    </div>
+                </div>
+
+                <div class="script-timeline" style="margin-top: 1.5rem;">
+                    <div class="timeline-node">
+                        <h4>CAVS COIN RECOGNITION</h4>
+                        <p>Awarded an on-site Spot Award (CAVS Coin) from Heather during the ramp phase for combining top-tier operational efficiency with rigorous quality standards.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>UNBROKEN AMAZE POINTS STREAK</h4>
+                        <p>Secured recognition for four consecutive months as a top stack ranker, consistently earning Amaze Points from April through July.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>JUNE SPECIAL MENTION MILESTONE</h4>
+                        <p>Received formal appreciation as the very first individual on the floor to cross the threshold of 10,000 files processed in a single month while safeguarding accuracy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pane 04: Training & EOD -->
+            <div class="content-pane" id="pane-3">
+                <div class="script-timeline">
+                    <div class="timeline-node">
+                        <h4>TARGETED PROCESS TRAINING LEADERSHIP</h4>
+                        <p>Stepped in proactively when team-wide workflow confusion and errors arose on complex extractions. Conducted structured walkthrough sessions covering:</p>
+                        <ul>
+                            <li>V.A. Benefit Letter Extraction</li>
+                            <li>Social Security Documentation Extraction</li>
+                            <li>Gift Letter Documentation Guidelines</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;">Successfully drove down error rates across the team and received formal peer/leadership appreciation.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>DAILY EOD VOLUME REPORTING OWNERSHIP</h4>
+                        <p>Consistently owned and managed the compilation and submission of cumulative End-of-Day team volume reports for over a month, ensuring complete operational transparency.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pane 05: MMC Committee -->
+            <div class="content-pane" id="pane-4">
+                <div class="script-timeline">
+                    <div class="timeline-node">
+                        <h4>MIND MAGIC CREW (MMC) LEADERSHIP</h4>
+                        <p>Contributed significantly across multiple employee engagement and committee initiatives in Chennai:</p>
+                        <ul>
+                            <li><strong>PKT Communications:</strong> Acted as core Chennai-end communicator supporting Process Knowledge Test preparation.</li>
+                            <li><strong>Yoga Day Wellness:</strong> Coordinated mindfulness and wellness execution across the floor.</li>
+                            <li><strong>Mandala of Pride:</strong> Facilitated creative relaxation sessions designed to mitigate operational stress.</li>
+                            <li><strong>Brain Day Museum:</strong> Engineered and facilitated a large-scale, two-day interactive mini-museum installation showcasing cognitive health facts and functional tips for broad departmental engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- 30-Min Script Holographic Modal -->
+    <div class="holo-modal-overlay" id="holoModal">
+        <div class="holo-modal-container">
+            <div class="holo-modal-header">
+                <div class="holo-modal-title">OVERALL SUMMARY FROM JAN - AUG</div>
+                <button class="holo-modal-close" onclick="closeHoloModal()">✕</button>
+            </div>
+            <div class="holo-modal-body">
+                <div class="script-timeline">
+                    <div class="timeline-node">
+                        <h4>PHASE 1: OPENING & RAMP FOUNDATION </h4>
+                        <p><strong>Talk-Track:</strong> "Thank you for making time for my mid-year review. Over the past six months, my primary objective has been maintaining an elite balance between high-volume throughput and rigorous accuracy in mortgage operations."</p>
+                        <p><strong>Key Highlights:</strong> Mention establishing a strong baseline during Jan–Mar, outperforming the wider taskforce, and earning an onshore Spot Award (CAVS Coin) from Heather.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>PHASE 2: SCORECARDS & VOLUME MILESTONES </h4>
+                        <p><strong>Talk-Track:</strong> Walk through the month-wise progression as a Rank #1 stack ranker:</p>
+                        <ul>
+                            <li><strong>April:</strong> 19 efficiency, 92% quality, 6,822 files.</li>
+                            <li><strong>May:</strong> Peak speed capacity with 32 efficiency and 10,011 files processed.</li>
+                            <li><strong>June:</strong> Major floor milestone crossing 10,534 files in a single month, earning a Special Mention.</li>
+                            <li><strong>July:</strong> Precision pivot to achieve an elite 96% quality score.</li>
+                            <li><strong>August:</strong> High sustained output at 33 efficiency and 9,678 files.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>PHASE 3: AWARDS & TRAINING CONTRIBUTIONS</h4>
+                        <p><strong>Talk-Track:</strong> Highlight the 4-month unbroken Amaze Points streak and CAVS Coin. Detail stepping in to conduct targeted walkthrough training on V.A. Benefit, Social Security, and Gift Letters to resolve team errors, plus daily EOD reporting ownership.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>PHASE 4: MMC COMMITTEE & CLOSING </h4>
+                        <p><strong>Talk-Track:</strong> Emphasize cultural impact through MMC—PKT prep, Yoga Day, Mandala of Pride, and the two-day Brain Day Museum installation.</p>
+                        <p><strong>Closing:</strong> "This half demonstrates my ability to scale volume, mentor peers, and elevate floor morale. I am eager to expand on these achievements in the next half."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchPane(paneIndex, element) {
+            document.querySelectorAll('.nav-pill').forEach(pill => pill.classList.remove('active'));
+            element.classList.add('active');
+
+            document.querySelectorAll('.content-pane').forEach(pane => pane.classList.remove('active'));
+            document.getElementById('pane-' + paneIndex).classList.add('active');
+
+            const headings = [
+                { title: '01. PRODUCTIVITY & SCORECARD TELEMETRY', sub: 'Month-by-month Volume & Efficiency Breakdown' },
+                { title: '02. QUALITY & PRECISION CURVE', sub: 'Accuracy Compliance Across High-Volume Cycles' },
+                { title: '03. AWARDS & RECOGNITION BADGES', sub: 'CAVS Coin, Amaze Points & Special Mentions' },
+                { title: '04. TRAINING & EOD REPORTING', sub: 'Workforce Enablement & Cumulative Throughput Tracking' },
+                { title: '05. MIND MAGIC CREW (MMC) IMPACT', sub: 'Committee Leadership & Wellness Installations' }
+            ];
+
+            document.getElementById('pane-heading').innerText = headings[paneIndex].title;
+            document.getElementById('pane-subheading').innerText = headings[paneIndex].sub;
+        }
+
+        function openHoloModal() {
+            document.getElementById('holoModal').classList.add('open');
+        }
+
+        function closeHoloModal() {
+            document.getElementById('holoModal').classList.remove('open');
+        }
+
+        function toggleHoloTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>
